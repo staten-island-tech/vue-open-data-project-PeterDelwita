@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+// At least 2 charts
 </script>
 
 <template>
