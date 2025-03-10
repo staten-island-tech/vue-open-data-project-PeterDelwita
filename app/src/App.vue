@@ -12,12 +12,20 @@ async function getCasesPerDay() {
     alert('Date not found')
   }
 }
+
+onMounted(() => {
+  getCasesPerDay()
+})
 // At least 2 charts (use chartjs)
 
 // Process
 // 1. Make the async function and fetch data
 // 2. Decide which parts of the data should be used to make charts
-// 3. Look at the API and use the data to make components
+// 3. Look at the API and use the data to make components (need to come back to this as I plan)
+
+// Looking at the baby name project...
+// There's a dropdown allowing you to select a name, which is accompanied by a chart. The chart should be a component
+// There's a message while the charts load. The sidebar is in App.vue, while the rest is in its own view
 </script>
 
 <template>
