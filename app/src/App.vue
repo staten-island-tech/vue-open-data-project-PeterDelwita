@@ -16,7 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <!--API: https://data.cityofnewyork.us/resource/rc75-m7u3.json -->
   <h1 class="text-red-500 text-center text-[64px] font-bold">
-    COVID-19 Daily Counts of Cases, Hospitalizations, and Deaths
+    COVID-19 Counts of Cases, Hospitalizations, and Deaths
   </h1>
   <div class="button-container bg-gray-200 flex justify-center flex-wrap w=full">
     <nav>
