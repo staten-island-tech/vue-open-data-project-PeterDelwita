@@ -3,7 +3,6 @@
     <Pie v-if="state.loaded && state.chartData" :data="state.chartData" />
     <div v-if="!state.loaded">Loading data...</div>
     <div v-if="state.error">{{ state.error }}</div>
-    <!-- <button class="btn" v-if="state.canLoadMore" @click="loadMoreData">Load More Data</button> -->
   </div>
 </template>
 
@@ -33,10 +32,7 @@ const state = reactive({
   loaded: false,
   chartData: null,
   error: null,
-  currentPage: 0,
-  dataLimit: 2000,
   allData: [],
-  canLoadMore: true,
 })
 
 const boroughDeathCounts = {
@@ -80,28 +76,15 @@ const loadData = async () => {
   state.error = null
 
   try {
-    const response = await fetch(
-      `${props.apiUrl}?$limit=${state.dataLimit}&$offset=${state.currentPage * state.dataLimit}`,
-    )
+    const response = await fetch(`${props.apiUrl}`)
     const data = await response.json()
 
     const aggregatedData = aggregateData(data)
 
-    if (state.currentPage === 0) {
-      state.allData = aggregatedData
-    } else {
-      state.allData.datasets[0].data = aggregatedData.datasets[0].data
-    }
-
+    state.allData = aggregatedData
     state.chartData = state.allData
 
     state.loaded = true
-
-    if (data.length < state.dataLimit) {
-      state.canLoadMore = false
-    }
-
-    state.currentPage++
   } catch (error) {
     state.error = error.message
     console.error(error)
@@ -111,10 +94,6 @@ const loadData = async () => {
 onMounted(() => {
   loadData()
 })
-
-const loadMoreData = () => {
-  loadData()
-}
 </script>
 
 <style scoped></style>

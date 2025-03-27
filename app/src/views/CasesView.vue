@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="flex justify-center w-full">
     <CaseChart :apiUrl="apiUrl" />
   </div>
 </template>
